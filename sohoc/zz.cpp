@@ -19,32 +19,33 @@ using ld = long double;
 bool loopInput = false;
 
 int n;
-int a[N];
 
 void solve(){
     // long long can hold 19 digits max
     int n;
     cin>>n;
-    if (n < 4) cout << "-1";
-	else if (n == 4) cout << "2310";
-    else {
-        if(n>19){
-            int n1 = 19;
-            int n2 = n-19;
-            int somu = pow(10, (n1-1));
-            int x = somu % 2310;
-            int count = 0;
-            cout<<"1";
-            for(int i = 1; i<=n2; i++){
-                cout<<"0";
-            }
-            cout<<somu + 2310 - x;
-        }else{
-            int somu = pow(10, (n-1));
-            int x = somu % 2310;
-            cout<<somu + 2310 - x;
+    int theThing = 2 * 3 * 5 * 7 * 11;
+	if (n < 4) cout << -1;
+	else if (n == 4) cout << theThing;
+	else {
+        cout<<"1";
+        int tracked = 1;
+        for(int i = 1; i < n-4; i++) {
+            cout<<"0";
+            tracked = tracked * 10;
         }
-    }
+        int temp = 1;
+        for (int i = 1; i < n; i++)
+        {
+            temp = (temp*10)%theThing;
+        }
+        temp = theThing - temp;
+        if (temp >= 1000) cout << temp;
+        else if (temp >= 100 && temp < 1000) cout << '0' << temp;
+        else if (temp >= 10 && temp < 100) cout << '00' << temp;
+        else cout << '000' << temp;
+	}
+
 }
 
 signed main(){
