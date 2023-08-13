@@ -43,14 +43,8 @@ int main()
         // a[left] = k - a[right]
         int ad = a[right] + x;
         int ab = k - a[right] + x;
-        cout<< "ad = " <<ad << "\n";
-        cout<< "ab = " << ab << "\n";
-        cout<<"cnt["<<ad<<"]: "<<cnt[ad]<<"\n";
         answer += cnt[ad];
-        cout<<"cnt["<<ab<<"] before__: "<<cnt[ab]<<"\n";
         cnt[ab]++;
-        cout<<"cnt["<<ab<<"] after: "<<cnt[ab]<<"\n";
-        cout<<"End turn "<<right<<"\n";
     }
-    cout <<"Final = "<<answer;
+    cout<<answer;
 }
