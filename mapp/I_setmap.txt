@@ -1,0 +1,20 @@
+		Tìm một đoạn có tổng lớn nhất, sao cho độ dài của đoạn đó nằm trong giá trị L->R, L=3, R=5 thì trong các đoạn có độ dài là 3, 4 ,5 in ra đoạn có tổng lớn nhất
+		min=L;
+		max=R;
+
+		tong(l->r)=sum[r]-sum[l-1];
+
+		multiset<long> s; là lưu sum[l] với l là những vị trí thỏa mãn 
+i-l+1 sẽ thuộc [L->R]
+
+
+
+		for i=1->n
+			sum[i]=sum[i-1]+A[i];
+		long long ans=-1e18;
+		for i=1->n;
+			if(i>=min) s.insert(sum[i-min]);
+			if(i>=max) s.erase(s.find(sum[i-max]));
+			ans=max(ans, sum[i]-*s.begin());
+
+		cout<<ans<<'\n';

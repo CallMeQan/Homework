@@ -1,0 +1,18 @@
+	Dùng map
+		D để đếm các mật khẩu
+
+
+		for i=1->n D[s[i]]+=1;
+
+duyệt mọi cái xâu con của xâu i đang xét
+
+mad=   m, a, d, ma, ad, mad
+s.insert(xaucon);
+dùng set để lọc các xâu con trùng
+duyệt các string sau khi lọc và coi thử mỗi string xuất hiện bao nhiêu 
+lần
+cnt=0;
+for(string v: s){
+	cnt+=D[v];
+}
+cout<<cnt<<'\n';

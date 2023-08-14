@@ -10,9 +10,10 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    long long a, b, x, y;
-    cin >> x >> a >> b;
-    long long count_x = b / x - (a - 1) / x;
-    cout<<count_x;
+    long long a, b, k;
+    cin >> k >> a >> b;
+    // last / num - (first + 1) / num
+    long long count_k = b / k - (a - 1) / k;
+    cout<<count_k;
     return 0;
 }

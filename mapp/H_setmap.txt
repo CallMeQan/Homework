@@ -1,0 +1,22 @@
+		Cho các bạn một dãy A gồm n phần tử có q truy vấn, mỗi truy vấn sẽ thay đổi phần tử x thành y tức là gán A_x=y;
+
+
+		tìm số nguyên dương nhỏ nhất không xuất hiện trong mảng hiện tại.
+
+		set và map
+
+		D là tần số xuất hiện của các số trong mảng A hiện tại
+		set S là tập các số không xuất hiện trong mảng hiện tại
+		for i=1->n;
+			D[A[i]]+=1;
+		for i=1->n+1;
+			if(D[i]==0) s.insert(i); // tức là i không có trong mảng
+		cin>>q;
+		while(q--){
+			D[A[x]]-=1;
+			if(D[A[x]]==0) s.insert(A[x]); //số A_x không còn xuất hiện trong mảng
+
+			D[y]+=1;
+			if(D[y]==1) s.erase(y); //số y xuất hiện trong mảng
+			cout<<*s.begin();
+		}
