@@ -14,23 +14,17 @@
 using namespace std;
 using ull = unsigned int;
 using ld = long double;
- 
-bool loopInput = false;
- 
+
+bool loopInput = true;
+
 int n;
 int a[N];
- 
+
 void solve(){
     // Something goes here...
-    int a, b, c;
-    cin>>a>>b>>c;
-    for(int i=1; i<=3; i++){
-        if(a>b) swap(a,b);
-        if(b>c) swap(b,c);
-    }
-    cout<<b;
+    
 }
- 
+
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);

@@ -14,23 +14,32 @@
 using namespace std;
 using ull = unsigned int;
 using ld = long double;
- 
+
 bool loopInput = false;
- 
+
 int n;
-int a[N];
- 
+int a[N], b[N], c[N], dp[N];
+
 void solve(){
-    // Something goes here...
-    int a, b, c;
-    cin>>a>>b>>c;
-    for(int i=1; i<=3; i++){
-        if(a>b) swap(a,b);
-        if(b>c) swap(b,c);
+    b[0] = 0;
+    cin>>n;
+    c[n+1] = 0;
+    for(int i = 1; i<=n; i++){
+        cin>>a[i];
+        b[i] = b[i-1];
+        if(a[i] == 2) b[i]++;
     }
-    cout<<b;
+    for(int i = n; i > 0; i--){
+        c[i] = c[i+1];
+        if(a[i] == 1) c[i]++;
+    }
+    int ans = 1e9+5;
+    for(int i = 0; i<=n;i++){
+        ans = min(ans, b[i] + c[i+1]);
+    }
+    cout<<ans;
 }
- 
+
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);

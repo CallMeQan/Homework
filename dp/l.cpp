@@ -14,23 +14,35 @@
 using namespace std;
 using ull = unsigned int;
 using ld = long double;
- 
+
 bool loopInput = false;
- 
-int n;
-int a[N];
- 
+
+int n,k;
+int a[N], dp[N], b[N];
+
 void solve(){
     // Something goes here...
-    int a, b, c;
-    cin>>a>>b>>c;
-    for(int i=1; i<=3; i++){
-        if(a>b) swap(a,b);
-        if(b>c) swap(b,c);
+    cin>>n>>k;
+    for(int i = 1; i<=n; i++){
+        cin>>a[i];
     }
-    cout<<b;
+    int ans = LLONG_MIN;
+    int flag = 0;
+    dp[0] = 0;
+    for(int i = 1; i<=n; i++){
+        flag += a[i];
+        if(i>=k){
+            b[i-k+1] = flag;
+            flag -= a[i-k+1];
+        }
+        dp[i] = max(a[i], dp[i-1] + a[i]);
+    }
+    for(int i = 1; i <= n-k+1; i++){
+        ans = max(ans, max(b[i]+dp[i-1], b[i]));
+    }
+    cout<<ans;
 }
- 
+
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);

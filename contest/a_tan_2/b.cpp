@@ -14,23 +14,24 @@
 using namespace std;
 using ull = unsigned int;
 using ld = long double;
- 
+
 bool loopInput = false;
- 
-int n;
+
+int n, k;
 int a[N];
- 
+
 void solve(){
-    // Something goes here...
-    int a, b, c;
-    cin>>a>>b>>c;
-    for(int i=1; i<=3; i++){
-        if(a>b) swap(a,b);
-        if(b>c) swap(b,c);
+    // (a1 + a2 + a3 + ...) * x <=k
+    cin>>n>>k;
+    int total = 0;
+    for(int i = 1; i<=n; i++){
+        cin>>a[i];
+        total += a[i];
     }
-    cout<<b;
+    if(total>k) cout<<-1;
+    else cout<<k/total;
 }
- 
+
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);

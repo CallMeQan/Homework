@@ -8,29 +8,39 @@
 #define se second
 #define pb push_back
 #define int long long
-#define array vector
+#define vec vector
 #define PI 3.1459
 #define endl "\n"
 using namespace std;
 using ull = unsigned int;
 using ld = long double;
- 
+
 bool loopInput = false;
- 
+
 int n;
-int a[N];
- 
+vec<int> a[N];
+int dp[N];
+
 void solve(){
     // Something goes here...
-    int a, b, c;
-    cin>>a>>b>>c;
-    for(int i=1; i<=3; i++){
-        if(a>b) swap(a,b);
-        if(b>c) swap(b,c);
+    cin>>n;
+    for(int i = 1; i<=n; i++){
+        int p, k;
+        cin>>p>>k;
+        a[k].push_back(p);
     }
-    cout<<b;
+    int ans = 0;
+    dp[0] = 0;
+    for(int k = 1; k<=100000; k++){
+        dp[k] = dp[k-1];
+        for(int j = 0; j < a[k].size(); j++){
+            int p = a[k][j];
+            dp[k] = max(dp[k], dp[p] + 1);
+        }
+    }
+    cout<<dp[100000];
 }
- 
+
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);

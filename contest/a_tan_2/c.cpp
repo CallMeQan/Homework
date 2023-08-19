@@ -14,23 +14,22 @@
 using namespace std;
 using ull = unsigned int;
 using ld = long double;
- 
+
 bool loopInput = false;
- 
-int n;
-int a[N];
- 
+
+int n, m;
+int a[N], pre[N];
+
 void solve(){
     // Something goes here...
-    int a, b, c;
-    cin>>a>>b>>c;
-    for(int i=1; i<=3; i++){
-        if(a>b) swap(a,b);
-        if(b>c) swap(b,c);
+    cin>>n>>m;
+    pre[0] = 0;
+    for(int i = 1; i<=m; i++){
+        cin>>a[i];
+        pre[i] = pre[i-1] + a[i];
     }
-    cout<<b;
 }
- 
+
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
