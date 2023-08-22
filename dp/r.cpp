@@ -8,37 +8,36 @@
 #define se second
 #define pb push_back
 #define int long long
-#define vec vector
+#define array vector
 #define PI 3.1459
 #define endl "\n"
 using namespace std;
 using ull = unsigned int;
 using ld = long double;
 
-bool loopInput = false;
+bool loopInput = true;
 
-int n;
-vec<pair<int,int>> a[N];
-int dp[N];
+int n,x;
+int a[N];
+long double dp[N];
+long double cal(long double money, int j, int i){
+    return money * ((long double)a[i] / a[j]) - (long double) money * 2/100;
+}
 
 void solve(){
     // Something goes here...
-    cin>>n;
+    cin>>n>>x;
     for(int i = 1; i<=n; i++){
-        int p, k, c;
-        cin>>p>>k>>c;
-        a[k].push_back(make_pair(p,c));
+        cin>>a[i];
     }
-    int ans = 0;
-    dp[0] = 0;
-    for(int k = 1; k<=100000; k++){
-        dp[k] = dp[k-1];
-        for(int j = 0; j < a[k].size(); j++){
-            int p = a[k][j].fi;
-            dp[k] = max(dp[k], dp[p] + a[k][j].se);
+    dp[0] = x;
+    for(int i = 1; i<=n; i++){
+        dp[i] = dp[i-1];
+        for(int j = 1; j <i; j++){
+            dp[i] = max(dp[i], cal(dp[j-1], j, i));
         }
     }
-    cout<<dp[100000];
+    cout<<fixed<<setprecision(5)<<dp[n]<<endl;
 }
 
 signed main(){

@@ -3,12 +3,12 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 1000006
+#define N 65
 #define fi first
 #define se second
 #define pb push_back
 #define int long long
-#define vec vector
+#define array vector
 #define PI 3.1459
 #define endl "\n"
 using namespace std;
@@ -18,27 +18,17 @@ using ld = long double;
 bool loopInput = false;
 
 int n;
-vec<pair<int,int>> a[N];
-int dp[N];
+int a[N], dp[N][3];
 
 void solve(){
-    // Something goes here...
     cin>>n;
+    dp[0][0] = 1;
     for(int i = 1; i<=n; i++){
-        int p, k, c;
-        cin>>p>>k>>c;
-        a[k].push_back(make_pair(p,c));
+        dp[i][0] = dp[i-1][1] + dp[i-1][2] + dp[i-1][0];
+        dp[i][1] = dp[i-1][0];
+        dp[i][2] = dp[i-1][1];
     }
-    int ans = 0;
-    dp[0] = 0;
-    for(int k = 1; k<=100000; k++){
-        dp[k] = dp[k-1];
-        for(int j = 0; j < a[k].size(); j++){
-            int p = a[k][j].fi;
-            dp[k] = max(dp[k], dp[p] + a[k][j].se);
-        }
-    }
-    cout<<dp[100000];
+    cout<<dp[n][0] + dp[n][1] + dp[n][2];
 }
 
 signed main(){

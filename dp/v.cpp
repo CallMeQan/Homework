@@ -8,7 +8,7 @@
 #define se second
 #define pb push_back
 #define int long long
-#define vec vector
+#define array vector
 #define PI 3.1459
 #define endl "\n"
 using namespace std;
@@ -16,29 +16,26 @@ using ull = unsigned int;
 using ld = long double;
 
 bool loopInput = false;
-
+int MOD = 998244353;
 int n;
-vec<pair<int,int>> a[N];
-int dp[N];
+int a[N], w[N], dp[N];
 
 void solve(){
     // Something goes here...
     cin>>n;
-    for(int i = 1; i<=n; i++){
-        int p, k, c;
-        cin>>p>>k>>c;
-        a[k].push_back(make_pair(p,c));
-    }
-    int ans = 0;
+    w[0] = 1;
+    w[1] = 1;
+    w[2] = 5;
     dp[0] = 0;
-    for(int k = 1; k<=100000; k++){
-        dp[k] = dp[k-1];
-        for(int j = 0; j < a[k].size(); j++){
-            int p = a[k][j].fi;
-            dp[k] = max(dp[k], dp[p] + a[k][j].se);
-        }
+    dp[1] = 0;
+    dp[2] = 12;
+    for(int i = 3; i<= n; i++){
+        w[i] = (w[i-1] + 4*w[i-2] + 2*w[i-3]) % MOD;
     }
-    cout<<dp[100000];
+    for(int i = 3; i<= n; i++){
+        dp[i] = (dp[i-1] + 4*dp[i-2] + 12*w[i-2] + 2*dp[i-3] + 12*w[i-3]) % MOD;
+    }
+    cout<<dp[n];
 }
 
 signed main(){
