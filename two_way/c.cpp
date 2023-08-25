@@ -35,7 +35,7 @@ void solve(){
             }
         }
     }
-    cout<<fixed<<setprecision(5)<<((long double)ans/count);
+    cout<<fixed<<setprecision(5)<<((double)ans/count);
 }
 
 signed main(){

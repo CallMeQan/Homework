@@ -17,31 +17,28 @@ using ld = long double;
 
 bool loopInput = false;
 
-int n,m;
-int a[N];
-int non_possible;
-bool dp[10006][10006];
+int n;
+int a[N], b[N], c[N];
 
 void solve(){
-    cin>>n>>m;
+    // Something goes here...
+    cin>>n;
+    b[0] = 0;
+    c[n+1] = 0;
     for(int i = 1; i<=n; i++){
         cin>>a[i];
-        a[i] %= m;
+        b[i] = b[i-1];
+        if(a[i] == 2) b[i]++;
     }
-    if(n >= m){
-        cout<<"YES"<<endl;
-        return;
+    for(int i = n; i > 0; i--){
+        c[i] = c[i+1];
+        if(a[i] == 1) c[i]++;
     }
-    dp[1][a[1]] = true;
-    for(int i = 1; i<=n; i++){
-        for(int j = 0; j<m;j++){
-            dp[i][j] = dp[i-1][j] | dp[i - 1][(j - a[i] + m) % m];
-        }
-        dp[i][a[i]] = true;
+    int ans = 1e9;
+    for(int i = 0; i <= n; i++){
+        ans = min(ans, b[i] + c[i+1]);
     }
-    if(dp[n][0] == true)
-        cout << "YES" << endl;
-    else cout << "NO" << endl;
+    cout<<ans;
 }
 
 signed main(){

@@ -3,7 +3,7 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 1000006
+#define N 3006
 #define fi first
 #define se second
 #define pb push_back
@@ -17,31 +17,33 @@ using ld = long double;
 
 bool loopInput = false;
 
-int n,m;
-int a[N];
-int non_possible;
-bool dp[10006][10006];
+int n;
+int a[N], dp[N][1003];
 
 void solve(){
-    cin>>n>>m;
+    // Something goes here...
+    cin>>n;
     for(int i = 1; i<=n; i++){
         cin>>a[i];
-        a[i] %= m;
     }
-    if(n >= m){
-        cout<<"YES"<<endl;
-        return;
-    }
-    dp[1][a[1]] = true;
     for(int i = 1; i<=n; i++){
-        for(int j = 0; j<m;j++){
-            dp[i][j] = dp[i-1][j] | dp[i - 1][(j - a[i] + m) % m];
+        for(int j = 1; j <= 1001; j++){
+            dp[i][j] = 1;
         }
-        dp[i][a[i]] = true;
     }
-    if(dp[n][0] == true)
-        cout << "YES" << endl;
-    else cout << "NO" << endl;
+
+    for(int i = 1; i<=n; i++){
+        for(int k = 1; k < i; k++){
+            if(a[i]> a[k]) dp[i][a[i] - a[k]] = dp[k][a[i] - a[k]] + 1;
+        }
+    }
+    int ans = 0;
+    for(int i = 1; i<=n; i++){
+        for(int j = 1; j <= 1001; j++){
+            ans = max(ans, dp[i][j]);
+        }
+    }
+    cout<<ans;
 }
 
 signed main(){
