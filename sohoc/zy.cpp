@@ -15,16 +15,15 @@ void sieve() {
 		}
 	}
 	for (int i = 2; i <= N; i++) 
-		if (prime[i]) a[cnt++] = i;
+		if (prime[i]) a[++cnt] = i;
 }
  
 bool check(int n) {
-	if (n == 1) return false;
-	else for (int i = 0; i < cnt; i++) {
+	for (int i = 1; i <= cnt; i++) {
 		if (a[i] > sqrt(n)) break;
 		if (n % a[i] == 0) return false;
 	}
-	return true;
+	return n>1;
 } 
  
 int main() {

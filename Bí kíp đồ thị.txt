@@ -1,0 +1,38 @@
+﻿GRAPH:
+
+
+1) BFS (Có mở xem code nhau):
+https://codeforces.com/contestInvitation/219598de3387ec42a6eddb0d6a58ce5646ea2076
+
+
+2) Dijk (Có mở xem code nhau)
+https://codeforces.com/contestInvitation/0a768d63ce4558d2a9ecb98ae8089c94549d8592
+
+
+Record BFS + Dijk 
+https://drive.google.com/drive/folders/1ytLWnnkexCT905IXTcwxVGUYi2VmVLK2?usp=sharing
+
+
+3) DSU (Có mở xem code nhau)
+https://codeforces.com/contestInvitation/88d3c05360679a78cc337745b254ad3b47f3574b
+
+
+Record DSU:
+https://drive.google.com/drive/folders/1wjmc8Co2hhGhWveRtTionIUP7rECqxIb?usp=sharing
+
+
+4) Cây khung + LCA  (Có mở xem code nhau).
+https://codeforces.com/contestInvitation/9c7a8e62799eb74ba7d04205ccc0886122587251
+
+
+Nhớ học cây khung trước LCA, cây khung thì học kruskal, lên VNOI đọc siêu dễ, cài được nó phải xài DSU
+
+
+Record LCA + kruskal:
+https://drive.google.com/drive/folders/1bHSClL499z_6KabMbwsTy1OtvO9rJRQ8?usp=sharing
+
+
+
+
+5) Liên thông mạnh, cầu khớp, song liên thông  (Có mở xem code nhau)
+https://codeforces.com/contestInvitation/a8fea42a729490141bff661c55e9770991b734cf

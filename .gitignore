@@ -1,2 +1,6 @@
 *.exe
+
+# Media file
 *.mp4
+*.wmv
+*.mkv
