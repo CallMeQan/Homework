@@ -32,7 +32,5 @@ Record LCA + kruskal:
 https://drive.google.com/drive/folders/1bHSClL499z_6KabMbwsTy1OtvO9rJRQ8?usp=sharing
 
 
-
-
 5) Liên thông mạnh, cầu khớp, song liên thông  (Có mở xem code nhau)
 https://codeforces.com/contestInvitation/a8fea42a729490141bff661c55e9770991b734cf
