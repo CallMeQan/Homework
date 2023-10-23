@@ -12,39 +12,51 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 5e5 + 9;
 
 bool multiTestCases = false;
 
-int n,q;
-int a[N];
+int n, q;
+pii a[N];
+// {connected, total_connected}
 
-int access(int u){
-    if(a[u] == u) return u;
-    return access(a[u]);
+int acs(int k)
+{
+    if(a[k].fi == k) return k;
+    return a[k].fi = acs(a[k].fi);
 }
-
+ 
 void join(int u, int v)
 {
-    int x = access(u);
-    int y = access(v);
-    if(x != y) a[x] = y;
+    int x = acs(u);
+    int y = acs(v);
+ 
+    if(x!=y)
+    {
+        a[y].fi = x;
+       // sz[x] += sz[y];
+        a[x].se += a[y].se;
+    }
 }
 
 void solve(){
     // Something goes here...
     cin>>n>>q;
-    for(int i = 1; i<=n; i++)a[i] = i;
-    for(int i = 1; i<=q;i++){
+    for(int i = 1; i<=n; i++) {
+        a[i].fi = i;
+        a[i].se = 1;
+    }
+    for(int i = 1; i<=q; i++) {
         char c;
-        int u, v;
-        cin>>c>>u>>v;
-        if(c == '?'){
-            if(access(u) == access(v)){
-                cout<<"YES"<<endl;
-            }else cout<<"NO"<<endl;
+        int u,v;
+        cin>>c;
+        if(c == '+'){
+            cin>>u>>v;
+            join(u,v);
         }else{
-            join(u,v);  
+            cin>>u;
+            int k = acs(u);
+            cout<<a[k].se<<endl;
         }
     }
 }

@@ -21,7 +21,7 @@ Record DSU:
 https://drive.google.com/drive/folders/1wjmc8Co2hhGhWveRtTionIUP7rECqxIb?usp=sharing
 
 
-4) Cây khung + LCA  (Có mở xem code nhau).
+4) Cây khung + LCA  (Có mở xem code nhau). (cây sầu riêng, cây chuối, cây dừa)
 https://codeforces.com/contestInvitation/9c7a8e62799eb74ba7d04205ccc0886122587251
 
 

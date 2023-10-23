@@ -16,37 +16,21 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n,q;
+int ans, x, y;
 int a[N];
-
-int access(int u){
-    if(a[u] == u) return u;
-    return access(a[u]);
-}
-
-void join(int u, int v)
-{
-    int x = access(u);
-    int y = access(v);
-    if(x != y) a[x] = y;
-}
-
+int ans = 1;
 void solve(){
     // Something goes here...
-    cin>>n>>q;
-    for(int i = 1; i<=n; i++)a[i] = i;
-    for(int i = 1; i<=q;i++){
-        char c;
-        int u, v;
-        cin>>c>>u>>v;
-        if(c == '?'){
-            if(access(u) == access(v)){
-                cout<<"YES"<<endl;
-            }else cout<<"NO"<<endl;
-        }else{
-            join(u,v);  
+    cin >> x >> y;
+    int power_of_x = x;
+    while(y){
+        if(y % 2){
+            ans = ans * power_of_x % MOD;
         }
+        power_of_x = power_of_x * power_of_x % MOD;
+        y >>= 1;
     }
+    cout << ans;
 }
 
 signed main(){

@@ -23,27 +23,30 @@ int cntmo = 0;
 int cntdong = 0;
 void solve(){
     // Something goes here...
-    int ans = 0;
     cin>>n>>s;
-    for(int i = 1; i<=n; i++){
-        if(s[i] == '('){
-            ans++;
-        }else{
-            if(ans == 0){
-                cntmo++;
-            }else{
-                ans--;
+    for(int i = 1; i <= n; i++){
+        // chac chan la ( hoac )
+        if(s[i] == '(') cntmo++;
+        else{
+            if(cntdong==0){
+
             }
         }
     }
+    if(cntmo > cntdong){
+        cntdong += cntmo - cntdong;
+    }else if(cntmo < cntdong){
+        cntmo += cntdong - cntmo;
+    }
     while(cntmo>0){
-        cout<<"(";
+        cout<<'(';
         cntmo--;
     }
-    while(ans<0){
+    while(cntdong>0){
         cout<<")";
-        ans++;
+        cntdong--;
     }
+
 }
 
 signed main(){

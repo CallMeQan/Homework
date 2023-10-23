@@ -12,40 +12,39 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 2e5 + 9;
 
 bool multiTestCases = false;
 
-int n,q;
+int n,m;
 int a[N];
 
-int access(int u){
+int acs(int u){
     if(a[u] == u) return u;
-    return access(a[u]);
+    return acs(a[u]);
 }
 
 void join(int u, int v)
 {
-    int x = access(u);
-    int y = access(v);
+    int x = acs(u);
+    int y = acs(v);
     if(x != y) a[x] = y;
 }
 
 void solve(){
     // Something goes here...
-    cin>>n>>q;
-    for(int i = 1; i<=n; i++)a[i] = i;
-    for(int i = 1; i<=q;i++){
-        char c;
-        int u, v;
-        cin>>c>>u>>v;
-        if(c == '?'){
-            if(access(u) == access(v)){
-                cout<<"YES"<<endl;
-            }else cout<<"NO"<<endl;
-        }else{
-            join(u,v);  
-        }
+    cin>>n>>m;
+    for(int i = 1; i<=n; i++){
+        int c;
+        cin>>c;
+        a[i] = c;
+    }
+
+    for(int i = 1; i<=m; i++){
+        int u,v;
+        cin>>u>>v;
+        join(u,v);
+        cout<<a[acs(u)]<<endl;
     }
 }
 

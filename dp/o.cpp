@@ -3,7 +3,7 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 1000006
+#define N 100006
 #define fi first
 #define se second
 #define pb push_back
