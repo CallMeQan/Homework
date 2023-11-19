@@ -12,15 +12,25 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 1e5 + 9;
 
 bool multiTestCases = false;
 
 int n;
-int a[N];
+int a[N], dp[N];
 
 void solve(){
-    
+    // Something goes here...
+    cin>>n;
+    for(int i = 1; i<=n; i++) cin>>a[i];
+    a[0] = 1e9;
+    int ans = -1;
+    for(int i = 1; i<= n; i++){
+        dp[i] = 1;
+        if(a[i] > a[i-1]) dp[i] = dp[i-1] + 1;
+        ans = max(ans, dp[i]);
+    }
+    cout<<ans;
 }
 
 signed main(){

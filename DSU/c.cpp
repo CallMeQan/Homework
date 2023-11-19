@@ -54,6 +54,7 @@ void solve(){
             ans = ans*2 % MOD;
         }
     }
+    cout<<"lmao";
     cout<<ans;
 }
 

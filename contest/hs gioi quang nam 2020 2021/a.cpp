@@ -20,7 +20,14 @@ int n;
 int a[N];
 
 void solve(){
-    
+    // Something goes here...
+    cin>>n;
+    int ans = 0;
+    while(n != 0){
+        ans += n % 10;
+        n /= 10;
+    }
+    cout<<ans;
 }
 
 signed main(){

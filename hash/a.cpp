@@ -16,11 +16,23 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
-int a[N];
+string a, b;
 
 void solve(){
+    // Something goes here...
+    cin>>a>>b;
     
+    for(int i = 0; i<a.length(); i++){
+        int flagged = 0;
+        for(int j = i; j<(i+b.length()); j++){
+            int z = j - i;
+            if(a[j]){
+                if(a[j] == b[z]){
+                    cout<<i+1<<" ";
+                }
+            }
+        }
+    }
 }
 
 signed main(){

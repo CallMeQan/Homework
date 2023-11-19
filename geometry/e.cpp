@@ -17,10 +17,23 @@ const int N = 1e6 + 9;
 bool multiTestCases = false;
 
 int n;
-int a[N];
+pii a[N];
 
 void solve(){
-    
+    // Something goes here...
+    cin>>n;
+    int ans = 0;
+    for(int i=1; i<=n; i++) cin>>a[i].fi>>a[i].se;
+    for(int i = 1; i <= n; i++){
+        for(int j = i; j<=n; j++){
+            for(int k = j; k<=n; k++){
+                ans += abs((a[j].fi - a[i].fi) * (a[k].se - a[i].se) - (a[k].fi - a[i].fi) * (a[j].se - a[i].se));
+            }
+        }
+    }
+    cout<<ans/2;
+    if(ans % 2 == 0)cout<< ".0"<<endl;
+	else cout<<".5"<<endl;
 }
 
 signed main(){

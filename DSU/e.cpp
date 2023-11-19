@@ -16,11 +16,35 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
-int a[N];
+int n, m;
+// m la dong, n la cot
+int a[1005][1005], par[N];
+int ans = 0;
+
+bool checked[N];
+vector<pair<int,pii>> bruh;
+vector<pii> q;
+
+int acs(int x){
+	if(par[x]==x)return x;
+	else return par[x]=acs(par[x]);
+}
+void join(int u,int v){
+	int x=acs(u);
+	int y=acs(v);
+	if(x!=y){
+		par[x]=y;
+	}
+}
+
+void bfs(int start){
+    
+}
 
 void solve(){
-    
+    // Something goes here...
+    cin>>m>>n;
+
 }
 
 signed main(){

@@ -17,27 +17,26 @@ using ld = long double;
 
 bool loopInput = true;
 
-int a[N];
-
-int count_divisors(int num)
-{
-    int count = 0;
-    for (int i = 1; i <= sqrt(num); i++){
-        if (num % i == 0){
-            count++;
-            if (i != num / i) count++;
+int n, k, cnt[N+5], res = 0;
+void sanguoc(int t){
+    for(int i = 1; i <= N; i++){
+        for(int j = i; j <= N; j += i){
+            cnt[j]++;
         }
     }
-
-    return count;
 }
 
 int maxNum = -1;
 
 void solve(int index){
     // Something goes here...
-    cin>>a[index];
-    maxNum = max(maxNum, count_divisors(a[index]));
+    cin >> n;
+    sanguoc(n);
+    for(int i = 1; i <= n; i++){
+        int x; cin >> x;
+        res = max(res, cnt[x]);
+    }
+    cout << res;
 }
 
 signed main(){

@@ -20,7 +20,8 @@ int n;
 int a[N];
 
 void solve(){
-    
+    // Something goes here...
+    cin>>n;
 }
 
 signed main(){

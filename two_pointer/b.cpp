@@ -16,11 +16,26 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
-int a[N];
-
+int n, x;
+int a[N], b[N];
+int ans = 0;
 void solve(){
-    
+    // Something goes here...
+    cin>>n>>x;
+    for(int i = 1; i<=n; i++){
+        cin>>a[i];
+    }
+    int j = 1;
+    int s = 0;
+    for(int i = 1; i<=n; i++){
+        s += a[i];
+        while(j <= i && s > x){
+            s -= a[j];
+            j++;
+        }
+        if(s == x) ans++;
+    }
+    cout<<ans;
 }
 
 signed main(){
