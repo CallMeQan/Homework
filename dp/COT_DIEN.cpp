@@ -12,26 +12,26 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 5009;
+const int MAX_N = 2e6+9;
 
 bool multiTestCases = false;
 
 int n;
 int a[N];
-bool isNumPrime[N];
+int dp[N];
+bool isNumPrime[MAX_N];
 
 void eratosthenes_sieve()
 {
-    isNumPrime[0] = false;
-    isNumPrime[1] = false;
-    for (long long i = 2; i <= N; i++)
+    for (long long i = 2; i <= MAX_N; i++)
     {
         isNumPrime[i] = true;
     }
-    for (long long i = 2; i <= N; i++)
+    for (long long i = 2; i <= MAX_N; i++)
     {
         if(isNumPrime[i]){
-            for (long long j = i*i; j <= N; j+=i)
+            for (long long j = i*i; j <= MAX_N; j+=i)
             {
                 isNumPrime[j] = false;
             }
@@ -39,21 +39,32 @@ void eratosthenes_sieve()
     }
 }
 
+/*
+9
+8 17 16 19 20 11 9 9 13
+
+cặp nguyên tố là (8,9)x2 (17, 20)
+out: 3
+
+dp[i].fi là đếm bao nhiêu số cặp với a[i] là nguyên tố
+dp[i].se là a[i]
+*/
 void solve(){
-    // Something goes here...
-    int ans = 0;
     cin>>n;
+    // Something goes here...
     for(int i = 1; i<=n; i++){
         cin>>a[i];
-        int flag = 0;
-        while(a[i] > 0){
-            if(!isNumPrime[a[i]]) {
-                flag = 1;
-            }
-            a[i] /= 10;
-        }
-        if(flag == 0) ans++;
+        dp[i] = 1;
     }
+    int ans = -1;
+    for(int i = 1; i<=n; i++){
+        for(int j = 1; j<i; j++){
+            if(isNumPrime[a[i]+ a[j]]){
+                dp[i] = max(dp[i], dp[j]+1);
+            }
+        }
+    }
+    for(int i = 1; i<=n; i++) ans = max(ans,dp[i]);
     cout<<ans;
 }
 

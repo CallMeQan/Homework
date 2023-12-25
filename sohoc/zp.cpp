@@ -3,7 +3,7 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 1000006
+#define N 2000006
 #define fi first
 #define se second
 #define pb push_back
@@ -15,9 +15,9 @@ using namespace std;
 using ull = unsigned int;
 using ld = long double;
 
-bool loopInput = true;
+bool loopInput = false;
 
-int n, k, cnt[N+5], res = 0;
+int n, k, cnt[N], res = 0;
 void sanguoc(int t){
     for(int i = 1; i <= N; i++){
         for(int j = i; j <= N; j += i){
@@ -28,7 +28,7 @@ void sanguoc(int t){
 
 int maxNum = -1;
 
-void solve(int index){
+void solve(){
     // Something goes here...
     cin >> n;
     sanguoc(n);
@@ -44,8 +44,5 @@ signed main(){
     cin.tie(0);
     cout.tie(0);
     if (loopInput){
-        int t; cin >> t;
-        for(int i = 1; i <= t; i++) solve(i);
-        cout<<maxNum;
-    } else solve(0);
+    } else solve();
 }

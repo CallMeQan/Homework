@@ -3,7 +3,7 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 10000016
+#define N 105
 #define fi first
 #define se second
 #define pb push_back
@@ -12,30 +12,27 @@
 #define PI 3.1459
 #define endl "\n"
 using namespace std;
-using ull = unsigned int;
 using ld = long double;
 
 bool loopInput = false;
-
-int n,m;
-int a[N], pre[N];
+int MOD = 1e9 + 7;
+int n, S;
+int a[N], dp[N][1005];
 
 void solve(){
     // Something goes here...
-    pre[0] = 0;
-    bool flagged = false;
-    cin>>n>>m;
-    for(int i = 1; i <= n; i++){
-        cin>>a[i];
-        pre[i] = pre[i-1] + a[i];
-        //cout<<pre[i]<<" ";
-        if(pre[i] % m == 0) {
-            flagged = true;
-            break;
+    cin>>n>>S;
+    for(int i = 1; i <= n; i++) cin>>a[i];
+    dp[0][0] = 1;
+    for(int i=1; i<=n; i++){
+        for(int j = 0; j<= S; j++){
+            dp[i][j] = dp[i-1][j];
+            if(j-a[i] >= 0){
+                dp[i][j] = (dp[i][j] + dp[i-1][j-a[i]]) % MOD;
+            }
         }
     }
-    if(flagged) cout<<"YES";
-    else cout<<"NO";
+    cout<<dp[n][S];
 }
 
 signed main(){

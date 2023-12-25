@@ -3,46 +3,35 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 10000016
 #define fi first
 #define se second
 #define pb push_back
 #define int long long
-#define array vector
 #define PI 3.1459
 #define endl "\n"
+#define pii pair<int,int>
 using namespace std;
-using ull = unsigned int;
-using ld = long double;
+const int MOD = 1e9+7;
+const int N = 1e6 + 9;
 
-bool loopInput = false;
+bool multiTestCases = false;
 
-int n,m;
-int a[N], pre[N];
+int n, m;
+int a[N];
 
 void solve(){
     // Something goes here...
-    pre[0] = 0;
-    bool flagged = false;
     cin>>n>>m;
-    for(int i = 1; i <= n; i++){
+    for(int i = 1; i<=n; i++){
         cin>>a[i];
-        pre[i] = pre[i-1] + a[i];
-        //cout<<pre[i]<<" ";
-        if(pre[i] % m == 0) {
-            flagged = true;
-            break;
-        }
     }
-    if(flagged) cout<<"YES";
-    else cout<<"NO";
 }
 
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    if (loopInput){
+    if (multiTestCases){
         int t; cin >> t;
         while (t--) solve();
     } else solve();

@@ -16,52 +16,41 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
+int n, res = 0;
 int a[N];
 bool isNumPrime[N];
 
 void eratosthenes_sieve()
 {
-    isNumPrime[0] = false;
-    isNumPrime[1] = false;
-    for (long long i = 2; i <= N; i++)
-    {
-        isNumPrime[i] = true;
-    }
-    for (long long i = 2; i <= N; i++)
-    {
-        if(isNumPrime[i]){
-            for (long long j = i*i; j <= N; j+=i)
-            {
-                isNumPrime[j] = false;
+    isNumPrime[0] = isNumPrime[1] = true;
+    for(int i = 2; i <= sqrt(N); i++){
+        if(!isNumPrime[i]){
+            for(int j = i*i; j <= N; j += i){
+                isNumPrime[j] = true;
             }
         }
     }
+
 }
 
 void solve(){
     // Something goes here...
-    int ans = 0;
+    eratosthenes_sieve();
     cin>>n;
-    for(int i = 1; i<=n; i++){
-        cin>>a[i];
-        int flag = 0;
-        while(a[i] > 0){
-            if(!isNumPrime[a[i]]) {
-                flag = 1;
-            }
-            a[i] /= 10;
+    int tmp = sqrt(n);
+    for(int i = 2; i <= tmp; i++){
+        if(!isNumPrime[i]){
+            res++;
         }
-        if(flag == 0) ans++;
     }
-    cout<<ans;
+    cout << res;
+
 }
 
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    eratosthenes_sieve();
     if (multiTestCases){
         int t; cin >> t;
         while (t--) solve();

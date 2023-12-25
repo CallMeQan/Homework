@@ -3,7 +3,7 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 10000016
+#define N 1000006
 #define fi first
 #define se second
 #define pb push_back
@@ -12,30 +12,36 @@
 #define PI 3.1459
 #define endl "\n"
 using namespace std;
-using ull = unsigned int;
 using ld = long double;
 
 bool loopInput = false;
 
-int n,m;
-int a[N], pre[N];
+bool isPerfectSquare(int n) {
+    if(n == 0) return false;
+    int root = sqrt(n);
+    return root * root == n;
+}
+
+int n;
+int a[N], dp[N];
 
 void solve(){
     // Something goes here...
-    pre[0] = 0;
-    bool flagged = false;
-    cin>>n>>m;
-    for(int i = 1; i <= n; i++){
+    cin>>n;
+    for(int i = 1; i<=n; i++){
         cin>>a[i];
-        pre[i] = pre[i-1] + a[i];
-        //cout<<pre[i]<<" ";
-        if(pre[i] % m == 0) {
-            flagged = true;
-            break;
-        }
     }
-    if(flagged) cout<<"YES";
-    else cout<<"NO";
+    int ans = 0;
+    for(int i = 1; i<=n; i++){
+        dp[i] = 1;
+        for(int j = max(1LL, i - 10); j<i; j++){
+            if(isPerfectSquare(abs(a[j] - a[i]))){
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+        ans = max(ans, dp[i]);
+    }
+    cout<<ans;
 }
 
 signed main(){

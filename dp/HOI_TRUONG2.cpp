@@ -3,39 +3,41 @@
 */
 #include <bits/stdc++.h>
 #include <vector>
-#define N 10000016
+#define N 1000006
 #define fi first
 #define se second
 #define pb push_back
 #define int long long
-#define array vector
+#define vec vector
 #define PI 3.1459
 #define endl "\n"
 using namespace std;
-using ull = unsigned int;
 using ld = long double;
 
 bool loopInput = false;
 
-int n,m;
-int a[N], pre[N];
+int n;
+vec<int> a[N];
+int dp[N];
 
 void solve(){
     // Something goes here...
-    pre[0] = 0;
-    bool flagged = false;
-    cin>>n>>m;
-    for(int i = 1; i <= n; i++){
-        cin>>a[i];
-        pre[i] = pre[i-1] + a[i];
-        //cout<<pre[i]<<" ";
-        if(pre[i] % m == 0) {
-            flagged = true;
-            break;
+    cin>>n;
+    for(int i = 1; i<=n; i++){
+        int p, k;
+        cin>>p>>k;
+        a[k].push_back(p);
+    }
+    int ans = 0;
+    dp[0] = 0;
+    for(int k = 1; k<=100000; k++){
+        dp[k] = dp[k-1];
+        for(int j = 0; j < a[k].size(); j++){
+            int p = a[k][j];
+            dp[k] = max(dp[k], dp[p] + 1);
         }
     }
-    if(flagged) cout<<"YES";
-    else cout<<"NO";
+    cout<<dp[100000];
 }
 
 signed main(){
