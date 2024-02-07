@@ -16,31 +16,19 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
-int a[N], dp[N];
+string str;
+string checker = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
+    string new_str = "";
+    getline(cin, str);
+    for(char c: str){
+        if(isalnum(c) && !isdigit(c)){
+            new_str += c;
         }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
     }
-    cout<<ans<<endl;
+    cout<<new_str;
 }
 
 signed main(){

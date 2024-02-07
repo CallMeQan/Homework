@@ -16,31 +16,20 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
-int a[N], dp[N];
+int u1, d, un;
+int a[N];
+
+bool check(double a){
+    return (a - (int)a) == 0.0;
+}
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
-        }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
-    }
-    cout<<ans<<endl;
+    cin>>u1>>d>>un;
+    double n = (double)((double)(un - u1) / (double)d) + (double)1.0;
+    if(check(n)){
+        cout<<(int)n<<endl;
+    }else cout<<-1;
 }
 
 signed main(){

@@ -66,6 +66,8 @@ signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    freopen("TIMDUONG.INP", "r", stdin);
+    freopen("TIMDUONG.OUT", "w", stdout);
     if (multiTestCases){
         int t; cin >> t;
         while (t--) solve();

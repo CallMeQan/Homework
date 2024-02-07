@@ -5,24 +5,34 @@
 #include <vector>
 #define fi first
 #define se second
-#define pb push_back
-#define int long long
-#define PI 3.1459
 #define endl "\n"
-#define pii pair<int,int>
 using namespace std;
-const int MOD = 1e9+7;
-const int N = 1;
+const int N = 105;
 
 bool multiTestCases = false;
 
-int n;
-int a[N][N];
+int n, m;
+int C[N][N], dp[N][N];
+/*
+    mỗi hàng là kênh chuyển
+    mỗi cột là gói tin
+*/
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    cout<<n/2<<endl;
+    cin>>n>>m;
+    for(int i = 1; i<=n; i++){
+        for(int j = 1; j<=m; j++){
+            cin>>C[i][j];
+        }
+    }
+    vector<int> a;
+    for(int j = 1; j <=m; j++){
+        //J là kênh
+        for(int i = 1; i<=n; i++){
+
+        }
+    }
 }
 
 signed main(){

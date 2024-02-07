@@ -12,35 +12,32 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 2009;
 
 bool multiTestCases = false;
 
-int n;
-int a[N], dp[N];
+string str;
+int dp[N][N];
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
+    cin>>str;
+    str = '&' + str;
+    int n = (int) str.size() - 1;
+    for(int tmp = 1; tmp<=n; tmp++){
+        for(int i = 1; i + tmp - 1 <=n; i++){
+            int j = j + tmp - 1;
+            if(j == i){
+                dp[i][j] = 1;
+            }else{
+                dp[i][j] = max(dp[i][j-1], dp[i+1][j]);
+                if(str[i] == str[j]){
+                    dp[i][j] = max(dp[i][j], dp[i+1][j-1] + 2);
+                }
+            }
         }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
     }
-    cout<<ans<<endl;
+    cout<<dp[1][n]<<endl;
 }
 
 signed main(){

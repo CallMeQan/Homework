@@ -12,36 +12,35 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 2006;
 
 bool multiTestCases = false;
 
-int n;
-int a[N], dp[N];
+int n, L;
+int H[N];
+int W[N];
+int dp[N];
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
-        }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
+    cin>>n>>L;
+    for(int i = 1; i <= n; i++){
+        cin>>H[i]>>W[i];
     }
-    cout<<ans<<endl;
+    for(int i = 1; i <= n; i++){
+        int tmp = H[i];
+        int sum = W[i];
+        dp[i] = H[i] + dp[i-1];
+        for(int j = i-1; j >= 1; j--){
+            tmp = max(tmp, H[j]);
+            sum += W[j];
+            if(sum > L) break;
+            dp[i] = min(dp[i], dp[j-1] + tmp);
+        }
+    }
+    cout << dp[n];
 }
+
 
 signed main(){
     ios_base::sync_with_stdio(false);

@@ -16,16 +16,15 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
-int a[N];
+string str;
 
 void solve(){
-    // Something goes here...
-    cin>>n;
+    // n up to 1e64
+    cin>>str;
     int ans = 0;
-    while(n != 0){
-        ans += n % 10;
-        n /= 10;
+    for(char c: str){
+        int digit = c - '0';
+        ans += digit;
     }
     cout<<ans;
 }

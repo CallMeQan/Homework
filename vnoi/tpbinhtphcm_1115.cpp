@@ -12,41 +12,44 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 2009;
 
 bool multiTestCases = false;
 
-int n;
-int a[N], dp[N];
+int n, k;
+int a[N];
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
-        }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
+    cin>>n>>k;
+    for(int i = 1; i<=n; i++){
+        cin>>a[i];
     }
-    cout<<ans<<endl;
+    pii ans = {1e9,1e9};
+    for(int i = 1; i<=n; i++){
+        int tmp = a[i];
+        for(int j = i+1; j<=n; j++){
+            tmp += a[j];
+            if(tmp == k){
+                if((j-i+1) < ans.se){
+                    ans.fi = i;
+                    ans.se = j - i + 1;
+                }
+                break;
+            }else if(tmp > k) break;
+        }
+    }
+    if(ans.fi == 1e9){
+        cout<<0<<endl;
+    }else cout<<ans.fi<<" "<<ans.se<<endl;
 }
 
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    freopen("TDOAN.INP", "r", stdin);
+    freopen("TDOAN.OUT", "w", stdout);
     if (multiTestCases){
         int t; cin >> t;
         while (t--) solve();

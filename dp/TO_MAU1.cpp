@@ -12,35 +12,29 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 1e5 + 9;
 
 bool multiTestCases = false;
 
 int n;
-int a[N], dp[N];
+int a[N][4], dp[N][4];
 
 void solve(){
     // Something goes here...
     cin>>n;
-    for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
-        }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
+    for(int i = 1; i<=n; i++){
+        cin>>a[i][1]>>a[i][2]>>a[i][3];
     }
-    cout<<ans<<endl;
+    dp[1][1] = a[1][1];
+    dp[1][2] = a[1][2];
+    dp[1][3] = a[1][3];
+    for(int i = 2; i<=n; i++){
+        dp[i][1] = min(dp[i-1][2] + a[i][1], dp[i-1][3] + a[i][1]);
+        dp[i][2] = min(dp[i-1][1] + a[i][2], dp[i-1][3] + a[i][2]);
+        dp[i][3] = min(dp[i-1][1] + a[i][3], dp[i-1][2] + a[i][3]);
+    }
+    int ans = min(dp[n][1], min(dp[n][2], dp[n][3]));
+    cout<<ans;
 }
 
 signed main(){

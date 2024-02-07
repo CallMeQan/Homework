@@ -2,27 +2,32 @@
     author: Qan
 */
 #include <bits/stdc++.h>
-#include <vector>
-#define fi first
-#define se second
-#define pb push_back
 #define int long long
-#define PI 3.1459
 #define endl "\n"
-#define pii pair<int,int>
 using namespace std;
-const int MOD = 1e9+7;
-const int N = 1;
 
 bool multiTestCases = false;
 
 int n;
-int a[N][N];
 
 void solve(){
     // Something goes here...
     cin>>n;
-    cout<<n/2<<endl;
+    int ans = 0;
+    for(int i = 1; i<=n; i++){
+        int tmp = 0;
+        for (long long i = 1; i*i <= n; i++) {
+            if (n % i == 0) {
+                if (i*i == n) {
+                    tmp++;
+                } else {
+                    tmp+=2;
+                }
+            }
+        }
+        if(tmp % 2 == 0) ans++;
+    }
+    cout<<ans;
 }
 
 signed main(){

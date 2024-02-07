@@ -2,33 +2,31 @@
     author: Qan
 */
 #include <bits/stdc++.h>
-#include <vector>
-#define fi first
-#define se second
-#define pb push_back
 #define int long long
-#define PI 3.1459
 #define endl "\n"
-#define pii pair<int,int>
 using namespace std;
-const int MOD = 1e9+7;
-const int N = 1;
 
 bool multiTestCases = false;
 
-int n;
-int a[N][N];
+int n, x, y;
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    cout<<n/2<<endl;
+    cin>>n>>x>>y;
+    int ans = 0;
+    int tmp = x*y;
+    for(int i = 1; i*tmp <= n; i++){
+        ans++;
+    }
+    cout<<ans;
 }
 
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    freopen("SHENYUN.INP", "r", stdin);
+    freopen("SHENYUN.OUT", "w", stdout);
     if (multiTestCases){
         int t; cin >> t;
         while (t--) solve();

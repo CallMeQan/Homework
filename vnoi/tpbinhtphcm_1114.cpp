@@ -17,36 +17,35 @@ const int N = 1e6 + 9;
 bool multiTestCases = false;
 
 int n;
-int a[N], dp[N];
+int a[N];
 
 void solve(){
     // Something goes here...
     cin>>n;
     for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
+    int l = 1;
+    int r = n;
+    int sumLeft = a[1];
+    int sumRight = a[n];
+    while(l<r){
+        if(sumLeft < sumRight){
+            l++;
+            sumLeft += a[l];
+        }else if(sumRight < sumLeft){
+            r--;
+            sumRight += a[r];
         }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
+        if(sumLeft == sumRight) break;
     }
-    cout<<ans<<endl;
+    cout<<l;
 }
 
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    freopen("CHIAMANG.INP", "r", stdin);
+    freopen("CHIAMANG.OUT", "w", stdout);
     if (multiTestCases){
         int t; cin >> t;
         while (t--) solve();

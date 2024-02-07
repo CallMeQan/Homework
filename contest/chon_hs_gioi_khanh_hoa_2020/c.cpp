@@ -12,35 +12,29 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 1e5 + 9;
 
 bool multiTestCases = false;
 
 int n;
-int a[N], dp[N];
+int a[N];
+double cur_max = 0.0;
+pii cur_pair;
+vector<pii> same_pair;
 
 void solve(){
     // Something goes here...
     cin>>n;
     for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
+    sort(a+1, a+n+1);
     for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
+        if(a[i] != a[i+1] && a[i+1] != 0 && cur_max < ((double)a[i] / (double)a[i+1])){
+            cur_pair.fi = a[i];
+            cur_pair.se = a[i+1];
+            cur_max = ((double)a[i] / (double)a[i+1]);
         }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
     }
-    cout<<ans<<endl;
+    cout<<cur_pair.fi<<" "<<cur_pair.se;
 }
 
 signed main(){

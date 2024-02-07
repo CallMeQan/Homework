@@ -4,3 +4,11 @@
 *.mp4
 *.wmv
 *.mkv
+
+#Codeblock file
+*.o
+
+#INP and OUT
+*.ANS
+*.INP
+*.OUT

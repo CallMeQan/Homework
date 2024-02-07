@@ -16,31 +16,33 @@ const int N = 1e6 + 9;
 
 bool multiTestCases = false;
 
-int n;
+int k;
+string str;
 int a[N], dp[N];
 
 void solve(){
     // Something goes here...
-    cin>>n;
-    for(int i = 1; i<=n; i++) cin>>a[i];
-    dp[0] = 0;
-    int ans = -1;
-    for(int i = 1; i<=n-1; i++){
-        int tmp = a[i];
-        dp[i] = 1;
-        for(int j = i+1; j<=n; j++){
-            if(tmp == 0) break;
-            tmp += a[j];
-            dp[i]++;
-        }
-        if(tmp == 0){
-            dp[i] = max(dp[i], dp[i-1]);
-        }else{
-            dp[i] = 0;
-        }
-        ans = max(ans, dp[i]);
+    cin>>k>>str;
+    int n = str.size();
+    for(int i = 0; i<n; i++){
+        char c = str[i];
+        a[i+1] = c - '0';
     }
-    cout<<ans<<endl;
+    int ans = 0;
+    for(int i = 1; i<=n; i++){
+        int count_1 = 0;
+        for(int j = i; j<=n; j++){
+            if(a[j] == 1){
+                count_1++;
+            }
+            if(count_1 == k){
+                ans++;
+                //cout<<"Found: "<<i<<" -> "<<j<<endl;
+            }else if(count_1 > k) break;
+            //cout<<i<<" -> "<<j<<endl;
+        }
+    }
+    cout<<ans;
 }
 
 signed main(){
