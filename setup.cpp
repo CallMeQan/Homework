@@ -2,19 +2,13 @@
     author: Qan
 */
 #include <bits/stdc++.h>
-#include <vector>
-#define N 1000006
 #define fi first
 #define se second
 #define pb push_back
 #define int long long
-#define array vector
-#define PI 3.1459
 #define endl "\n"
 using namespace std;
-using ull = unsigned int;
-using ld = long double;
-
+const int N = 1e6 + 5;
 bool loopInput = false;
 
 int n;
