@@ -12,18 +12,35 @@
 #define pii pair<int,int>
 using namespace std;
 const int MOD = 1e9+7;
-const int N = 1e6 + 9;
+const int N = 1.5*1e6 + 9;
 
 bool multiTestCases = false;
 
 int n, m;
-int a[N];
+int a[N], cnt[N];
+set<int> ds;
 
 void solve(){
     // Something goes here...
     cin>>n>>m;
     for(int i = 1; i<=n; i++){
         cin>>a[i];
+    }
+    for(int i = 1;i<=m; i++){
+        cnt[a[i]]++;
+    }
+    for(int i= 0; i<=N;i++){
+        if(!cnt[i]) ds.insert(i);
+    }
+    cout<<*ds.begin()<<" ";
+    for(int i = m + 1; i<=n; i++){
+        if(!cnt[a[i]]++){
+            ds.erase(a[i]);
+        }
+        if(!--cnt[a[i-m]]){
+            ds.insert(a[i-m]);
+        }
+        cout<<*ds.begin()<<" ";
     }
 }
 
