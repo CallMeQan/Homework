@@ -1,14 +1,6 @@
 /*
     author: Qan
 */
-
-
-
-
-// Nếu set multiTestCases thành false thì đây là solution cho bài C đề hsgioi tphcm 2022
-
-
-
 #include <bits/stdc++.h>
 #define fi first
 #define se second
@@ -18,7 +10,7 @@
 using namespace std;
 const int N = 1e4 + 9;
 
-bool multiTestCases = true;
+bool multiTestCases = false;
 
 int n, m, k, s, t;
 int ans;
@@ -107,6 +99,9 @@ signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    freopen("DEXUAT.INP", "r", stdin);
+    freopen("DEXUAT.OUT", "w", stdout);
+
     if (multiTestCases){
         int t; cin >> t;
         while (t--) solve();

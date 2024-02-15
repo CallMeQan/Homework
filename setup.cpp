@@ -16,7 +16,7 @@ int a[N];
 
 void solve(){
     // Something goes here...
-    
+    cout<<"Hello"<<endl;
 }
 
 signed main(){
