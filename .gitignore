@@ -12,3 +12,6 @@
 *.ANS
 *.INP
 *.OUT
+
+#TEMP
+TEMP_TRASH_FILE/*.*

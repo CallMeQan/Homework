@@ -29,7 +29,6 @@
 			"#define se second",
 			"#define pb push_back",
 			"#define int long long",
-			"#define PI 3.1459",
 			"#define endl \"\\n\"",
 			"#define pii pair<int,int>",
 			"using namespace std;",
