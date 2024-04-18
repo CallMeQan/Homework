@@ -1,7 +1,12 @@
-# My C++ Competitive training project
-Solution to all problem made by "Nguyen Nham Tan"
+# Update 7th April 2024, 3rd place in the city-level computer science exam for excellent students TPHCM
 
-## Will deleted after May 2024
+![Result](result.jpg)
+
+### What is this?
+
+My C++ Competitive training project
+My solution for all problems from [Nguyễn Nhâm Tấn](https://www.facebook.com/Ton2808)'s problems
 
 ### Why named "Homework"?
-idk, im stupid at naming so pls don't ask.
+
+I don't know, I created this repo just for saving my solution and transfering it between my PC and laptop
