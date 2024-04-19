@@ -19,7 +19,6 @@ bool multiTestCases = false;
 int n, m, k;
 int dist[N], dist2[N];
 vector<pii> a[N];
-vector<pii> b[N];
 
 priority_queue<pii, vector<pii>, greater<pii>> q;
 priority_queue<pii, vector<pii>, greater<pii>> p;

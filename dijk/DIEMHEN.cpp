@@ -6,17 +6,20 @@
 #define pb push_back
 using namespace std;
 const int N = 2e5 + 9;
-const int INF = 1e17;
+const int INF = 1e10;
 
 int n, m, k;
 vector<pii> path[N];
-// {point, weight}
+// {weight, point}
 
 int dist[N];
 int dist2[N];
+
 priority_queue<pii, vector<pii>, greater<pii>> q;
+priority_queue<pii, vector<pii>, greater<pii>> q2;
+
 void dijk(int start){
-    // {weight, point}
+    for(int i= 1; i<=n; i++) dist[i] = INF;
     dist[start] = 0;
     q.push({dist[start], start});
     while(!q.empty()){
@@ -25,8 +28,8 @@ void dijk(int start){
         q.pop();
         if(cost > dist[u]) continue;
         for(pii val: path[u]){
-            int next = val.fi;
-            int weight = val.se;
+            int next = val.se;
+            int weight = val.fi;
             if(dist[next] > dist[u] + weight){
                 dist[next] = dist[u] + weight;
                 q.push({dist[next], next});
@@ -36,19 +39,20 @@ void dijk(int start){
 }
 
 void dijk2(int start){
+    for(int i = 1; i<=n; i++) dist2[i] = INF;
     dist2[start] = 0;
-    q.push({dist2[start], start});
-    while(!q.empty()){
-        int u = q.top().se;
-        int cost = q.top().fi;
-        q.pop();
+    q2.push({dist2[start], start});
+    while(!q2.empty()){
+        int u = q2.top().se;
+        int cost = q2.top().fi;
+        q2.pop();
         if(cost > dist2[u]) continue;
         for(pii val: path[u]){
-            int next = val.fi;
-            int weight = val.se;
+            int next = val.se;
+            int weight = val.fi;
             if(dist2[next] > dist2[u] + weight){
                 dist2[next] = dist2[u] + weight;
-                q.push({dist2[next], next});
+                q2.push({dist2[next], next});
             }
         }
     }
@@ -65,7 +69,7 @@ signed main(){
         cin>>u>>v>>c;
         dist[i] = INF;
         dist2[i] = INF;
-        path[u].pb({v, c});
+        path[u].pb({c, v});
     }
     dijk(1);
     dijk2(n);
