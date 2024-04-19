@@ -3,17 +3,21 @@
 #define endl "\n"
 using namespace std;
 int n, m;
-vector<int> connected_city[2005];
-vector<int> checker[2005];
+vector<int> a[2005];
 bool visited[2005];
-int ans = 0;
-void acs(int k){
+void bfs(int k){
+    queue<int> q;
+    q.push(k);
     visited[k] = true;
-    for(int city : connected_city[k]){
-        if(visited[city]) {
-            continue;
+    while(!q.empty()){
+        int u = q.front();
+        q.pop();
+        for(int v: a[u]){
+            if(!visited[v]){
+                visited[v] = true;
+                q.push(v);
+            }
         }
-        acs(city);
     }
 }
 
@@ -25,26 +29,24 @@ signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+    freopen("ROUTE.INP", "r", stdin);
+    freopen("ROUTE.OUT", "w", stdout);
 
     cin>>n>>m;
     for(int i = 1; i<=m; i++){
         int x, y;
         cin>>x>>y;
-        connected_city[x].push_back(y);
+        a[x].push_back(y);
         // city number x is connect to city number y. Both way.
-        connected_city[y].push_back(x);
+        a[y].push_back(x);
     }
-    for(int i = 1; i<=n; i++){
-        cout<<" => Start accessing"<<i<<endl;
-        acs(i);
-        cout<<" => End accessing "<<i<<endl;
-        for(int j = 1; j<=n; j++){
-            if(!visited[j]){
-                ans++;
-                connected_city[i].push_back(j);
-                connected_city[j].push_back(i);
-            }
-        }
+    all_to_false();
+    bfs(1);
+    int ans = 0;
+    for(int i = 2; i<=n; i++){
+        if(visited[i]) continue;
+        ans++;
+        bfs(i);
     }
-    cout<<ans;
+    cout<<ans<<endl;
 }

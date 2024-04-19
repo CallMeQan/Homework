@@ -24,12 +24,12 @@ int n, m, x, ans = 0;
 array<int> village[N];
 int a[N];
 
-void BFS(int u)
+void DFS(int u)
 {
     a[u] = 1;
     for(auto d: village[u]){
         if(a[d]) continue;
-        BFS(d);
+        DFS(d);
     }
 }
 
@@ -45,7 +45,7 @@ void solve(){
     }
     for(int i = 1; i <= n; i++){
         if (a[i]) continue;
-        BFS(i); ans++;
+        DFS(i); ans++;
     }
     cout << ans;
 }
