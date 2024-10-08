@@ -2,23 +2,14 @@
     author: Qan
 */
 #include <bits/stdc++.h>
-#include <vector>
-#define N 106
-#define fi first
-#define se second
-#define pb push_back
 #define int long long
-#define array vector
-#define PI 3.1459
 #define endl "\n"
 using namespace std;
-using ull = unsigned int;
-using ld = long double;
-
+const int N = 1e5+5;
 bool loopInput = false;
 
 int n,W;
-int w[N], v[N], dp[N][100005];
+int w[N], v[N], dp[N][N];
 
 void solve(){
     // Something goes here...
@@ -33,7 +24,7 @@ void solve(){
                 dp[i][j] = max(dp[i][j] , dp[i - 1][j - w[i]] + v[i]);
         }
     }
- 
+
     long long res = 0;
     for(int i = 1 ; i <= W ; i++)
         res = max(res , dp[n][i]);

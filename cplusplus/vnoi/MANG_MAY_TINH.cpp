@@ -3,17 +3,23 @@
 */
 #include <bits/stdc++.h>
 #define int long long
+#define pb push_back
 #define endl "\n"
 using namespace std;
-const int N = 1e6 + 5;
+const int N = 2005;
 bool loopInput = false;
 
-int n;
-int a[N];
+int n,m;
+vector<int> a[N];
 
 void solve(){
-    // Something goes here...
-    cout<<"Hello"<<endl;
+    cin>>n>>m;
+    int u, v;
+    for(int i = 1; i<=n; i++){
+        cin>>u>>v;
+        a[u].pb(v);
+    }
+
 }
 
 signed main(){

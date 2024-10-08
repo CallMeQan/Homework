@@ -13,7 +13,7 @@ int main(){
         bool isPrime = true;
         for (long long j = 2; j <= sqrt(i); j++)
         {
-            if(i % j == 0){
+            if(i % j == 0){     
                 isPrime = false;
                 break;
             }

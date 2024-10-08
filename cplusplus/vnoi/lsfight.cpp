@@ -5,15 +5,25 @@
 #define int long long
 #define endl "\n"
 using namespace std;
-const int N = 1e6 + 5;
 bool loopInput = false;
 
 int n;
-int a[N];
 
 void solve(){
-    // Something goes here...
-    cout<<"Hello"<<endl;
+    cin>>n;
+    bool a[n+1][n+1];
+    int dp[n+1][n+1];
+    for(int i = 1; i<=n; i++){
+        for(int j = 1; j<=n; j++){
+            cin>>a[i][j];
+        }
+    }
+
+    // N - 1 lượt chơi
+    for(int i = 1; i<=n-1; i++){
+
+    }
+
 }
 
 signed main(){
